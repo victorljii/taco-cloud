@@ -1,10 +1,12 @@
 package sia.tacocloud;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -13,10 +15,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import sia.taco.Ingredient;
-import sia.taco.Ingredient.Type;
-import sia.taco.Taco;
-import sia.taco.TacoOrder;
+import sia.tacocloud.taco.Ingredient;
+import sia.tacocloud.taco.Ingredient.Type;
+import sia.tacocloud.taco.Taco;
+import sia.tacocloud.taco.TacoOrder;
+import sia.tacocloud.taco.data.IngredientRepository;
 
 /**
  * @author victorljli
@@ -28,25 +31,35 @@ import sia.taco.TacoOrder;
 @SessionAttributes("tacoOrder")     // 表明这个类中放到模型里面的 TacoOrder 对象应该在会话中一直保持, 这样能够使其跨多个请求.
 public class DesignTacoController {
 
+    private final IngredientRepository ingredientRepository;
+
+    @Autowired
+    public DesignTacoController(IngredientRepository ingredientRepository) {
+        this.ingredientRepository = ingredientRepository;
+    }
+
     @ModelAttribute     // 该方法会在处理请求的时候被调用, 构建一个包含 Ingredient 的 List 并将其放到模型中.
     public void addIngredientsToModel(Model model) {
-        List<Ingredient> ingredients = Arrays.asList(
-                new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
-                new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
-                new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
-                new Ingredient("CARN", "Carnitas", Type.PROTEIN),
-                new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES),
-                new Ingredient("LETC", "Lettuce", Type.VEGGIES),
-                new Ingredient("CHED", "Cheddar", Type.CHEESE),
-                new Ingredient("JACK", "Monterrey Jack", Type.CHEESE),
-                new Ingredient("SLSA", "Salsa", Type.SAUCE),
-                new Ingredient("SRCR", "Sour Cream", Type.SAUCE)
-        );
+//        List<Ingredient> ingredients = Arrays.asList(
+//                new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
+//                new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
+//                new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
+//                new Ingredient("CARN", "Carnitas", Type.PROTEIN),
+//                new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES),
+//                new Ingredient("LETC", "Lettuce", Type.VEGGIES),
+//                new Ingredient("CHED", "Cheddar", Type.CHEESE),
+//                new Ingredient("JACK", "Monterrey Jack", Type.CHEESE),
+//                new Ingredient("SLSA", "Salsa", Type.SAUCE),
+//                new Ingredient("SRCR", "Sour Cream", Type.SAUCE)
+//        );
+        List<Ingredient> ingredients = new ArrayList<>(
+                (Collection<? extends Ingredient>) ingredientRepository.findAll());
 
         Type[] types = Ingredient.Type.values();
         for (Type type : types) {
             // 放到 Model 属性中的数据将会复制到 Servlet 请求的属性中，这样视图就能找到数据，并使用它们在用户的浏览器中渲染页面。
-            model.addAttribute(type.toString().toLowerCase(), filterByType(ingredients, type));
+            model.addAttribute(type.toString().toLowerCase(),
+                    filterByType(ingredients, type));
         }
     }
 

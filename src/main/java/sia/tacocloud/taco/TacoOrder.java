@@ -1,6 +1,8 @@
-package sia.taco;
+package sia.tacocloud.taco;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
@@ -13,8 +15,11 @@ import org.hibernate.validator.constraints.CreditCardNumber;
  * @date 2024/02/18
  */
 @Data
-public class TacoOrder {
+public class TacoOrder implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    private Long id;
+    private Date placedAt;
     @NotBlank(message = "Name is required")
     private String deliveryName;
     @NotBlank(message = "Street is required")
