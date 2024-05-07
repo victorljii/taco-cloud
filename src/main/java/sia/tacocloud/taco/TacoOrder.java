@@ -10,19 +10,19 @@ import javax.validation.constraints.Pattern;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author victorljli
  * @date 2024/02/18
  */
 @Data
-@Table
+@Document(collection = "t_taco_orders")
 public class TacoOrder implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    private Long id;
+    private String id;
+    private static final long serialVersionUID = 1L;
     private Date placedAt = new Date();
     @NotBlank(message = "Name is required")
     private String deliveryName;

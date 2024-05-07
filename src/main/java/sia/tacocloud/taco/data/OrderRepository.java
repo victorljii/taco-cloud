@@ -1,8 +1,10 @@
 package sia.tacocloud.taco.data;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import sia.tacocloud.taco.TacoOrder;
 
-public interface OrderRepository extends CrudRepository<TacoOrder, Long> {
+@Repository
+public interface OrderRepository extends CrudRepository<TacoOrder, String> {
 
 }

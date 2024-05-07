@@ -1,5 +1,6 @@
 package sia.tacocloud.taco;
 
+import lombok.extern.slf4j.Slf4j;
 import sia.tacocloud.taco.data.IngredientRepository;
 import sia.tacocloud.taco.Ingredient.Type;
 
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@Slf4j
 @SpringBootApplication
 public class TacoCloudApplication {
 
