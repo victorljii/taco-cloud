@@ -1,4 +1,4 @@
-package sia.tacocloud;
+package sia.tacocloud.taco.web;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -40,20 +40,8 @@ public class DesignTacoController {
 
     @ModelAttribute     // 该方法会在处理请求的时候被调用, 构建一个包含 Ingredient 的 List 并将其放到模型中.
     public void addIngredientsToModel(Model model) {
-//        List<Ingredient> ingredients = Arrays.asList(
-//                new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
-//                new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
-//                new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
-//                new Ingredient("CARN", "Carnitas", Type.PROTEIN),
-//                new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES),
-//                new Ingredient("LETC", "Lettuce", Type.VEGGIES),
-//                new Ingredient("CHED", "Cheddar", Type.CHEESE),
-//                new Ingredient("JACK", "Monterrey Jack", Type.CHEESE),
-//                new Ingredient("SLSA", "Salsa", Type.SAUCE),
-//                new Ingredient("SRCR", "Sour Cream", Type.SAUCE)
-//        );
-        List<Ingredient> ingredients = new ArrayList<>(
-                (Collection<? extends Ingredient>) ingredientRepository.findAll());
+        List<Ingredient> ingredients = new ArrayList<>();
+        ingredientRepository.findAll().forEach(it -> ingredients.add(it));
 
         Type[] types = Ingredient.Type.values();
         for (Type type : types) {
@@ -79,7 +67,7 @@ public class DesignTacoController {
     }
 
     @PostMapping
-    public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute TacoOrder tacoOrder) {
+    public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute TacoOrder tacoOrder, Model model) {
         if (errors.hasErrors()) {
             return "design";
         }

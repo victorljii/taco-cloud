@@ -9,11 +9,5 @@ import lombok.Data;
  */
 @Data
 public class IngredientRef {
-
-    private final String ingredientId;
-
-    private Long tacoId;
-
-    private Long ingredientKey;
-
+    private final String ingredient;
 }

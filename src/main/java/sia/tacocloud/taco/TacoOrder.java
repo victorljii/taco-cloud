@@ -9,17 +9,21 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 /**
  * @author victorljli
  * @date 2024/02/18
  */
 @Data
+@Table
 public class TacoOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    @Id
     private Long id;
-    private Date placedAt;
+    private Date placedAt = new Date();
     @NotBlank(message = "Name is required")
     private String deliveryName;
     @NotBlank(message = "Street is required")
@@ -30,6 +34,7 @@ public class TacoOrder implements Serializable {
     private String deliveryState;
     @NotBlank(message = "Zip code is required")
     private String deliveryZip;
+    // 4111111111111111
     @CreditCardNumber(message = "Not a valid credit card number")
     private String ccNumber;
     @Pattern(regexp = "^(0[1-9]|1[0-2])(/)([2-9][0-9])$", message = "Must be formatted MM/YY")

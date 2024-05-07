@@ -1,5 +1,6 @@
-package sia.tacocloud;
+package sia.tacocloud.taco.web;
 
+import java.util.Date;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,6 @@ public class OrderController {
 
     private OrderRepository orderRepository;
 
-    @Autowired
     public OrderController(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
@@ -41,6 +41,7 @@ public class OrderController {
             return "orderForm";
         }
 
+//        order.setPlacedAt(new Date());
         log.info("Order submitted: {}", order);
         orderRepository.save(order);
         sessionStatus.setComplete();
