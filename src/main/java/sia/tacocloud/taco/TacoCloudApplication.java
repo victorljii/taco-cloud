@@ -2,7 +2,8 @@ package sia.tacocloud.taco;
 
 import lombok.extern.slf4j.Slf4j;
 import sia.tacocloud.taco.data.IngredientRepository;
-import sia.tacocloud.taco.Ingredient.Type;
+import sia.tacocloud.taco.model.Ingredient;
+import sia.tacocloud.taco.model.Ingredient.Type;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Bean;

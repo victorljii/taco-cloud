@@ -5,3 +5,11 @@ spring:
   data:
     mongodb:
       database: tacoclouddb
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: Iv23ctHSt3lqSHTVLXFl
+            client-secret: MIIEpAIBAAKCAQEArKcwEruERW/NHh/u9RhaWRVD4tinCHykGpOLz2kqs0W3p6+YdzyzUXix3Xlc3Uu02zOdbWUlJ8xGgQjqVZtxo6zPu1ieOUCKB7TX98KMFamRkotCOjKmrUUrFTgavtEInwPO7qOHq472Hnb5fSfotv3d90b66SnbOyZoGTFb8roWdmcG3wg/ZLMC/ixFqbgboeoIf9Lrhp+mhf+54M/J1JgKB+MyQpeV1DCAqkyjgvWJUKXeTn0XzR9MVgNXQm4Wmgj9WcLkh/A283AB4neXe8pnMIWecEJfVU++WR/BmAbHj0n78UnMs3qom05+3xseAql2ZNcZvKSijolyC49l4QIDAQABAoIBACDfXDnU1iRaWxWHQvoLfvhDIj/IvFTTVnNw8Ee3YFftyD/3IPJi7kluz365osLHrVGnDCxN+7sOG8ZpqiROil59grfK8aU48o7xEcWslvtw47ShKyTli/KlnsRVgFIgfqG4Geg53pT9jULTqED6HkbpIx/3tcI7I/CpKVzSlw0prRX+pAMZFSFMfDPAlaUOKdWLrFp/E06IHDdREIG24bqIpPrs4OCs0wXM+l+TjSAqpLvGh++hA3+xBXii7FsZnF8rJLr3Dl8tEWbJnXoxScZpJbvy6bR3iQN9Sz/WqX4IAVF9p8mi/auk8kxOBjED5OFptmvBieOBmWbov/M5otkCgYEA1qy0gZi5HOk5vts6noEt8ashQt+TEWJ3juY8IeQkv1FNgUGG1euXdwanbT95y7iyn8ToH7O8A/RX2XS1Bn2L+rBKle/xn8R+T7xL0d+kPJZ/Xd4ojfPJQgCBzJrCEbokfB12JGHBQEsV1Uo/gaXbVtobxLu0YqlHz1TptgX+IHMCgYEAzeOipBhfIfDqcXjj62b+otnTXEBzbwOhST5oywPcfw5selcgFqKhA4tuusa8wNFdXA7lLrOEp6vhEe2RA3bCMmH6ZSeDhrKNGH+AVyjjRrbI4RZxdupU+dE/tiRAMtPM46S6f7moUlWMIrA0pYQ2lsEuYSqX1BBgtFvCeJs4b1sCgYEAwGxeACxdAUUstZ7clGdGP3Edh0vQD60rbbOCAv700WiXCF0r92QNiGs2d/6Ftc4AjqV5S7FXvlOuywSJnx+58SNEN9Gzy3ndnqsxaxYDqStdT05rG5KBu9+oeTXe7vTi7z2ZQFM/Xdnv4BeFhTiduuQWL+nwbt89tuJt+vK0L3ECgYEAhRe64nLyxGEVXIb2ZwzsXF+NNxxewovJLizO1zXGyseLLka18ovso/r1eH3SNJ7iyAjE9DyN60m7s7grvt59SM53a/5wEpnHheeeEjnXObYdAwxcCrAOgHNYySiD65do4ltxR/G/MoIklaPsVHa0Rx3YGm3LOgXgTZbnjslgYPMCgYA2LKr08660bVV4LaMmAyLlNgBj5HSX5PQDEZxKGo2CcCeddxey4FVQTEuDSIPZDexRyPv8qslhi1wyoNjWNh83uJ8AMJLcQcBhxG4R5N7DgtLurPng1a9qMb7Qz+8UDYKzJ6ZWO219iTbmF6kd0UGLh+/uz6GA4xhaQqLpDcNYFg==
+            scope: email, public_profile

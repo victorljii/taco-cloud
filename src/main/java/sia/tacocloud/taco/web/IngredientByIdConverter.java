@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-import sia.tacocloud.taco.Ingredient;
+import sia.tacocloud.taco.model.Ingredient;
 import sia.tacocloud.taco.data.IngredientRepository;
 
 /**
